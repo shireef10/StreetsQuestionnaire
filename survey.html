@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stlye.css">
+    <link rel="stylesheet" type="text/css" href="./fonts-6/css/all.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.full.min.js"></script>
+    <title></title>
+
+</head>
+
+<body>
+    <h1>شارك برأيك في مبادرة تخفيف الزحام المروري داخل المدينة</h1>
+    <form id="form" action="submit.php" method="post">
+        <div>
+            <h2 class="arrow" style="cursor: pointer;">مقدمة:</h2>
+    <p style="color: black;font-size: 22px;font-weight: bold;"></p>
+    <p style="font-size: 18px;margin-top: -16px;">
+        تتعدد أسباب الزحام المروري داخل المدينة وتتشابك لكن النتيجة واحدة: تأخيرات وإستهلاك وقود زائد وتلوث وغيرها من النتائج
+        المترتبة على الزحام. وتختلف الأسباب وتأثيرها من مكان لآخر ومن وقت لآخر حسب سلوكيات المجتمع وإمكاناته وثقافته والتخطيط
+        الهندسي والقوانين المنظمة والقوي التنفيذية. لذلك للتعرف علي الأسباب الحقيقة للازدحام ومدي تأثير كل سبب وكيفية علاجه
+        بطريقة واقعية يجب أن يهتم بالمنظور المجتمعي ويمكن أن يتم ذلك من خلال المشاركة المجتمعية في مبادرة تخفيف الزحام داخل
+        المدينة والتي يطلقها مجلس بحوث النقل بأكاديمية البحث العلمي بهدف الوصول للأسباب الحقيقية للزحام وأماكنه داخل مدينة
+        القاهرة الكبرى في ضوء خبرة المستخدمين وكذا مشاركتهم الفاعلة في اختيار أنس الحلول. وتبدأ المبادرة بعمل استقصاء لأراء
+        مستخدمي الطرق ثم تحليل هذه الأراء بطريقة علمية وصولا إلى التوصيات لترفع بعد ذلك للجهات التنفيذية لاتخاذ اللازم.
+    
+    <br>
+    ويهدف هذا الاستبيان إلي التعرف علي الأسباب الحقيقة وراء الازدحام داخل المدينة ومدي تأثير هذه الأسباب وطرق علاجها. لذلك
+    ينقسم الاستبيان إلي عدة أقسام، القسم الأول يتعرف علي خصائص مستخدم الطريق ، والقسم الثاني يتعرف علي أماكن الازدحام
+    وتوقيتاتها ، والقسم الثالث يتعرف علي أسباب الازدحام في هذه المناطق من وجهة نظر مستخدم الطريق ومدي تأثير كل سبب ، والقسم
+    الرابع يحدد طرق العلاج ومدي واقعيتها ، وينتهي الاستبيان بالتعرف علي أي مقترحات إضافية للحلول.
+    </p>
+    </div>
+
+    
+<div> 
+    <h2 class="arrow" style="cursor: pointer;">القسم الأول: خصائص مستخدم الطريق</h2>
+    <div class="form-control">
+    <label for="gender" style=" font-weight: bold;">النوع:</label>
+    <select id="gender" name="gender" >
+        <option value="" selected disabled>اختر النوع</option>
+        <option value="ذكر">ذكر</option>
+        <option value="أنثى">أنثى</option>
+    </select>
+
+<label for="age" style=" font-weight: bold;">السن:</label>
+<select id="age" name="age" >
+    <option value="" selected>اختر السن</option>
+    <option value="أقل من 18 سنة">أقل من 18 سنة</option>
+    <option value="18-24">18-24</option>
+    <option value="24-30">24-30</option>
+    <option value="30-40">30-40</option>
+    <option value="40-60">40-60</option>
+    <option value="أكبر من 60">أكبر من 60</option>
+</select>
+
+
+    <label for="education" style=" font-weight: bold;">المؤهل الدراسي:</label>
+    <select id="education" name="education" >
+        <option value="" selected disabled>اختر المؤهل الدراسي</option>
+        <option value="ماجستير/دكتوراه">ماجستير/دكتوراه</option>
+        <option value="جامعي">جامعي</option>
+        <option value="معهد">معهد</option>
+        <option value="دبلوم">دبلوم</option>
+        <option value="أقل من دبلوم">أقل من دبلوم</option>
+    </select>
+
+        <label for="experience_street" style=" font-weight: bold;"> الخبرة في مجال الطرق والنقل والمرور</label>
+        <select id="experience_street" name="experience_street">
+            <option value="" selected disabled>اختر الخبرة</option>
+            <option value="ضعيفة">ضعيفة</option>
+            <option value="متوسطة">متوسطة</option>
+            <option value="جيدة">جيدة</option>
+            <option value=" ممتازة ">ممتازة</option>
+        </select>
+
+    <label for="driving-license" style=" font-weight: bold;">هل لديك رخصة قيادة؟</label>
+    <select id="driving-license" name="driving-license" >
+        <option value="" selected disabled>اختر إجابتك</option>
+        <option value="نعم">نعم</option>
+        <option value="لا">لا</option>
+    </select>
+
+
+<div class="grid-form">
+    <div class="checkbox-container">
+        <label for="transportation[]" style="font-size: 16px; font-weight: bold;">وسائل الموصلات المستخدمة داخل القاهرة الكبرى ومعدلاتها:</label>
+        <div class="checkbox-item">
+            <input type="checkbox" name="transportation[]" value="سيارة خاصة"> سيارة خاصة
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" name="transportation[]" value="أتوبيس"> أتوبيس
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" name="transportation[]" value="ميكروباص"> ميكروباص
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" name="transportation[]" value="تاكسي"> تاكسي
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" name="transportation[]" value="موتوسيكل"> موتوسيكل
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" name="transportation[]" value="قطار"> قطار
+        </div>
+    </div>
+
+    <div class="radio-container">
+        <label style="font-size: 16px; font-weight: bold;">احيانا</label>
+        <label style="font-size: 16px; font-weight: bold;">كثيرا</label>
+        <label style="font-size: 16px; font-weight: bold;">دائما</label><br>
+        <input type="radio" name="private-car-radio" value="احيانا">
+        <input type="radio" name="private-car-radio" value="كثيرا">
+        <input type="radio" name="private-car-radio" value="دائما"><br>
+        <input type="radio" name="bus_radio" value="احيانا">
+        <input type="radio" name="bus_radio" value="كثيرا">
+        <input type="radio" name="bus_radio" value="دائما"><br>
+        <input type="radio" name="microbus" value="احيانا">
+        <input type="radio" name="microbus" value="كثيرا">
+        <input type="radio" name="microbus" value="دائما"><br>
+        <input type="radio" name="taxi" value="احيانا">
+        <input type="radio" name="taxi" value="كثيرا">
+        <input type="radio" name="taxi" value="دائما"><br>
+        <input type="radio" name="motorcycle" value="احيانا">
+        <input type="radio" name="motorcycle" value="كثيرا">
+        <input type="radio" name="motorcycle" value="دائما"><br>
+        <input type="radio" name="train" value="احيانا">
+        <input type="radio" name="train" value="كثيرا">
+        <input type="radio" name="train" value="دائما"><br>
+    </div>
+</div>
+
+
+<label for="road-usage[]" style="font-size: 16px; font-weight: bold;">توقيتات استخدام الطرق ونسبتها:</label>
+<div class="grid-form">
+    <div class="checkbox-container">
+        <div class="checkbox-item">
+            <input type="checkbox" name="road-usage[]" value="6ص-9ص"> 6ص - 9ص
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" name="road-usage[]" value="9ص – 12ظ"> 9ص – 12ظ
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" name="road-usage[]" value="12ظ -  3م ">12ظ -  3م  
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" name="road-usage[]" value="3 - 5م">3 - 5م
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" name="road-usage[]" value="5 - 8م"> 5 - 8م
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" name="road-usage[]" value="8 - 11م"> 8 - 11م
+        </div>
+
+    </div>
+    <div class="radio-container">
+         <label style="font-size: 16px; font-weight: bold;">احيانا</label>
+         <label style="font-size: 16px; font-weight: bold;">كثيرا</label>
+         <label style="font-size: 16px; font-weight: bold;">دائما</label><br>
+         <input type="radio" name="road_usage6amTo9am" value="احيانا">
+                    <input type="radio" name="road_usage6amTo9am" value="كثيرا">
+                    <input type="radio" name="road_usage6amTo9am" value="دائما"><br>
+
+                    <input type="radio" name="road_usage9amTo12am" value="احيانا">
+                    <input type="radio" name="road_usage9amTo12am" value="كثيرا">
+                    <input type="radio" name="road_usage9amTo12am" value="دائما"><br>
+
+                    <input type="radio" name="road_usage12amTo3pm" value="احيانا">
+                    <input type="radio" name="road_usage12amTo3pm" value="كثيرا">
+                    <input type="radio" name="road_usage12amTo3pm" value="دائما"><br>
+
+                    <input type="radio" name="road_usage3pmTo5pm" value="احيانا">
+                    <input type="radio" name="road_usage3pmTo5pm" value="كثيرا">
+                    <input type="radio" name="road_usage3pmTo5pm" value="دائما"><br>
+
+                    <input type="radio" name="road_usage5pmTo8pm" value="احيانا">
+                    <input type="radio" name="road_usage5pmTo8pm" value="كثيرا">
+                    <input type="radio" name="road_usage5pmTo8pm" value="دائما"><br>
+
+                    <input type="radio" name="road_usage8pmTo11pm" value="احيانا">
+                    <input type="radio" name="road_usage8pmTo11pm" value="كثيرا">
+                    <input type="radio" name="road_usage8pmTo11pm" value="دائما"><br>
+    </div>
+
+</div>
+
+</div>
+</div>
+
+
+
+
+
+    <div>
+        <h2 class="arrow" style="cursor: pointer;"> القسم الثاني: توصيف أماكن الازدحام وتوقيتاتها</h2>
+        <div class="form-control">
+            <label for="cairo-road-usage[]" style="font-size: 16px; font-weight: bold;"> توقيت الازدحام داخل القاهرة الكبري بصفة عامة   :</label>
+        <div class="grid-form">
+            <div class="checkbox-container">
+                <div class="checkbox-item">
+                    <input type="checkbox" name="cairo-road-usage[]" value="6ص-9ص"> 6ص - 9ص
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="cairo-road-usage[]" value="9ص – 12ظ"> 9ص – 12ظ
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="cairo-road-usage[]" value="12ظ -  3م ">12ظ - 3م
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="cairo-road-usage[]" value="3 - 5م">3 - 5م
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="cairo-road-usage[]" value="5 - 8م"> 5 - 8م
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="cairo-road-usage[]" value="8 - 11م"> 8 - 11م
+                </div>
+        
+            </div>
+            <div class="radio-container">
+                <label style="font-size: 16px; font-weight: bold;">احيانا</label>
+                <label style="font-size: 16px; font-weight: bold;">كثيرا</label>
+                <label style="font-size: 16px; font-weight: bold;">دائما</label><br>
+                <input type="radio" name="cairo_usage6amTo9am" value="احيانا">
+                <input type="radio" name="cairo_usage6amTo9am" value="كثيرا">
+                <input type="radio" name="cairo_usage6amTo9am" value="دائما"><br>
+        
+                <input type="radio" name="cairo_usage9amTo12am" value="احيانا">
+                <input type="radio" name="cairo_usage9amTo12am" value="كثيرا">
+                <input type="radio" name="cairo_usage9amTo12am" value="دائما"><br>
+        
+                <input type="radio" name="cairo_usage12amTo3pm" value="احيانا">
+                <input type="radio" name="cairo_usage12amTo3pm" value="كثيرا">
+                <input type="radio" name="cairo_usage12amTo3pm" value="دائما"><br>
+        
+                <input type="radio" name="cairo_usage3pmTo5pm" value="احيانا">
+                <input type="radio" name="cairo_usage3pmTo5pm" value="كثيرا">
+                <input type="radio" name="cairo_usage3pmTo5pm" value="دائما"><br>
+        
+                <input type="radio" name="cairo_usage5pmTo8pm" value="احيانا">
+                <input type="radio" name="cairo_usage5pmTo8pm" value="كثيرا">
+                <input type="radio" name="cairo_usage5pmTo8pm" value="دائما"><br>
+        
+                <input type="radio" name="cairo_usage8pmTo11pm" value="احيانا">
+                <input type="radio" name="cairo_usage8pmTo11pm" value="كثيرا">
+                <input type="radio" name="cairo_usage8pmTo11pm" value="دائما"><br>
+            </div>
+        </div>
+
+
+            <label  style="font-size: 16px; font-weight: bold;">توصيف أماكن الزحام داخل القاهرة الكبري ونسبتها:</label>
+                        <div class="grid-form">
+                    <div class="checkbox-container">
+            <input type="checkbox" id="traffic-median-signals" name="traffic-congestion[]"
+                value="ميادين (تقاطعات سطحية) بإشارات مرور ضوئية" class="traffic-congestion-checkbox">
+            <label for="traffic-median-signals">ميادين (تقاطعات سطحية) بإشارات مرور ضوئية أو رجل مرور</label><br>
+            <input type="checkbox" id="traffic-median-no-signals" name="traffic-congestion[]"
+                value="ميادين (تقاطعات سطحية) بدون إشارات مرور (عسكري مرور)" class="traffic-congestion-checkbox">
+            <label for="traffic-median-no-signals">ميادين (تقاطعات سطحية) بدون إشارات مرور أو رجل مرور</label><br>
+            <input type="checkbox" id="roundabouts" name="traffic-congestion[]" value="الدورانات للخلف" class="traffic-congestion-checkbox">
+            <label for="roundabouts">الدورانات للخلف نتيجة غلق التقاطعات السطحية</label><br>
+            <input type="checkbox" id="around_commercial_areas" name="traffic-congestion[]"
+                value="حول المنشآت التجارية والترفيهية" class="traffic-congestion-checkbox"> 
+            <label for="around_commercial_areas">حول بعض المنشآت والمباني الإدارية والتجارية والتعليمية والترفيهية</label><br>
+        <!--  <input type="checkbox" id="around_educational_areas" name="traffic-congestion[]"
+                value="حول المنشآت التعليمية مثل المدارس و الجامعات" class="traffic-congestion-checkbox">
+            <label for="around_educational_areas" class="traffic-congestion-checkbox">حول المنشآت التعليمية مثل المدارس و الجامعات</label><br>-->
+            <!-- <input type="checkbox" id="around_governmental_areas" name="traffic-congestion[]"
+                value="حول بعض المنشآت والمباني الإدارية والتجارية والتعليمية والترفيهية  " class="traffic-congestion-checkbox">
+            <label for="around_governmental_areas">حول المنشآت الحكومية والإدارية والمصرفية</label><br> -->
+            <!-- <input type="checkbox" id="tunnels" name="traffic-congestion[]" value="أنفاق" class="traffic-congestion-checkbox">
+            <label for="tunnels">أنفاق</label><br> -->
+            <input type="checkbox" id="bridge_interchanges" name="traffic-congestion[]" value="مطالع الكباري" class="traffic-congestion-checkbox">
+            <label for="bridge_interchanges">مداخل ومخارج الكباري والأنفاق</label><br>
+            <input type="checkbox" id="areas_with_street_vendors" name="traffic-congestion[]" value="أماكن تجمع باعة جائلين" class="traffic-congestion-checkbox">
+            <label for="areas_with_street_vendors">بالقرب من مواقف النقل الجماعي ومحطات القطار والمترو</label><br>
+            <input type="checkbox" id="other-locations" name="traffic-congestion[]" value="أخرى" class="traffic-congestion-checkbox">
+            <label for="other-locations">أخرى</label><br>
+        </div>
+            <div class="radio-container">
+    <label style="font-size: 16px; font-weight: bold;">ضعيف</label>
+    <label style="font-size: 16px; font-weight: bold;">متوسط</label>
+    <label style="font-size: 16px; font-weight: bold;">قوي</label>
+    <label style="font-size: 16px; font-weight: bold;">قوي جدا</label><br>
+
+                <input type="radio" name="traffic_median_signals" value="ضعيف">
+                <input type="radio" name="traffic_median_signals" value="متوسط">
+                <input type="radio" name="traffic_median_signals" value="قوي">
+                <input type="radio" name="traffic_median_signals" value="قوي جدا"><br>
+                <input type="radio" name="traffic_median_no_signals" value="ضعيف">
+                <input type="radio" name="traffic_median_no_signals" value="متوسط">
+                <input type="radio" name="traffic_median-no_signals" value="قوي">
+                <input type="radio" name="traffic_median-no_signals" value="قوي جدا"><br>
+                    <input type="radio" name="roundabouts" value="ضعيف">
+                    <input type="radio" name="roundabouts" value="متوسط">
+                    <input type="radio" name="roundabouts" value="قوي">
+                    <input type="radio" name="roundabouts" value="قوي جدا"><br>
+                    <input type="radio" name="around_commercial_areas" value="ضعيف">
+                    <input type="radio" name="around_commercial_areas" value="متوسط">
+                    <input type="radio" name="around_commercial_areas" value="قوي">
+                    <input type="radio" name="around_commercial_areas" value="قوي جدا"><br>
+                <!-- <input type="radio" name="around_educational_areas" value="ضعيف">
+                <input type="radio" name="around_educational_areas" value="متوسط">
+                <input type="radio" name="around_educational_areas" value="قوي">
+                <input type="radio" name="around_educational_areas" value="قوي جدا"><br>
+                <input type="radio" name="around_governmental_areas" value="ضعيف">
+                <input type="radio" name="around_governmental_areas" value="متوسط">
+                <input type="radio" name="around_governmental_areas" value="قوي">
+                <input type="radio" name="around_governmental_areas" value="قوي جدا"><br>
+                <input type="radio" name="tunnels" value="ضعيف">
+                <input type="radio" name="tunnels" value="متوسط">
+                <input type="radio" name="tunnels" value="قوي">
+                <input type="radio" name="tunnels" value="قوي جدا"><br> -->
+                <input type="radio" name="bridge_interchanges" value="ضعيف">
+                <input type="radio" name="bridge_interchanges" value="متوسط">
+                <input type="radio" name="bridge_interchanges" value="قوي">
+                <input type="radio" name="bridge_interchanges" value="قوي جدا"><br>
+                <input type="radio" name="areas_with_street_vendors" value="ضعيف">
+                <input type="radio" name="areas_with_street_vendors" value="متوسط">
+                <input type="radio" name="areas_with_street_vendors" value="قوي">
+                <input type="radio" name="areas_with_street_vendors" value="قوي جدا"><br>
+                    
+</div></div>
+
+
+    
+        <div class="form-control">
+            <label style="font-weight: bold;">	توصيف أدق لأكثر الأماكن ازدحاما في طريقك المعتاد: </label><br>
+            <label for="example-type-1-location" style=" font-weight: bold;">عنوان مكان الازدحام</label>
+            <input type="text" id="example-type-1-location" name="example-type-1-location" ><br>
+    
+            <label for="example-type-1-map" style=" font-weight: bold;">موقع مكان الازدحام على الخريطة (إن أمكن)</label>
+            <!-- <input type="text" id="example-type-1-map" name="example-type-1-map" ><br> -->
+    
+    <div class="form-control" style="display: none;">
+        <label for="address">العنوان</label>
+        <input type="text" id="address" name="address" placeholder="ادخل عنوانك" required autocomplete="off">
+    </div>
+    <div style="display: none;">
+        <label for="longitude">Longitude (X):</label>
+        <input type="text" id="longitude"  name="longitude" readonly>
+    </div>
+    <div style="display: none;">
+        <label for="latitude">Latitude (Y):</label>
+        <input type="text" id="latitude" name="latitude">
+    </div>
+    
+    <div id="map"></div>
+
+    <div>
+        <label for="example-type-1-timing" style=" font-weight: bold;">توقيت الزحام:</label>
+        <input type="time" id="example-type-1-timing" name="example-type-1-timing" ><br>
+
+    </div>
+            
+    <div>
+        <label for="example-type-1-day" style=" font-weight: bold;">ايام الزحام:</label>
+        <input type="text" id="example-type-1-day" name="example-type-1-day"><br>
+    
+    </div>
+        </div>
+
+        
+<!--     
+        <div class="form-control">
+            <label style="font-weight: bold;">مثال على النوع الثاني:</label><br>
+            <label for="example-type-2-location" style=" font-weight: bold;">عنوان مكان الزحام:</label>
+            <input type="text" id="example-type-2-location" name="example-type-2-location" ><br>
+    
+            <label for="example-type-2-map" style=" font-weight: bold;">موقع مكان الزحام (خريطة):</label>
+    <div style="display: none;">
+                    <label for="long2">Longitude (X):</label>
+                    <input type="text" id="long2" name="long2" readonly>
+                </div>
+    <div style="display: none;">
+                    <label for="lat2">Latitude (Y):</label>
+                    <input type="text" id="lat2" name="lat2" readonly>
+                </div>
+                <div id="map2" style="height: 400px;"></div>
+    
+            <label for="example-type-2-timing" style=" font-weight: bold;">توقيت الزحام:</label>
+            <input type="text" id="example-type-2-timing" name="example-type-2-timing" ><br>
+        </div>
+    </div> -->
+</div>
+
+
+
+
+        
+
+        <div>
+     <h2 class="arrow" style="cursor: pointer;">لقسم الثالث: أسباب الازدحام ودرجات تأثيرها</h2>
+
+
+
+<div class="form-control">
+    <label style="font-size: 16px; font-weight: bold;">الأسباب العامة ودرجات تأثيرها</label>
+    <div class="grid-form">
+        <div class="checkbox-container">
+
+            <label for="behavioral_and_cultural_reasons">
+                <input type="checkbox" id="behavioral_and_cultural_reasons" name="General_interface_and_its_impact_scores[]"
+                    value="أسباب تتعلق بالسلوك والثقافة">
+                أسباب تتعلق بالسلوك والثقافة
+            </label><br>
+            <label for="road_engineering_and_planning">
+                <input type="checkbox" id="road_engineering_and_planning" name="General_interface_and_its_impact_scores[]"
+                    value="أسباب تتعلق بهندسة وتخطيط الطرق">
+            أسباب تتعلق بهندسة وتخطيط الطرق
+            </label><br>
+            <label for="traffic_management_reasons">
+                <input type="checkbox" id="traffic_management_reasons" name="General_interface_and_its_impact_scores[]"
+                    value="أسباب تتعلق بإدارة المرور">
+                أسباب تتعلق بإدارة المرور
+            </label><br>
+            <label for="reasons_of_mass_transit">
+                <input type="checkbox" id="reasons_of_mass_transit" name="General_interface_and_its_impact_scores[]"
+                    value="أسباب تتعلق بالنقل الجماعي">
+                 أسباب تتعلق بالنقل الجماعي
+            </label><br>
+            <label for="reasons_of_pedestrian_and_bicycle">
+                <input type="checkbox" id="reasons_of_pedestrian_and_bicycle" name="General_interface_and_its_impact_scores[]"
+                    value="أسباب تتعلق بمسارات المشاة والدراجات">
+                 أسباب تتعلق بمسارات المشاة والدراجات
+                        </label><br>
+            <label for="reasons_of_legislation_and_laws">
+                <input type="checkbox" id="reasons_of_legislation_and_laws" name="General_interface_and_its_impact_scores[]"
+                    value="أسباب تتعلق بالتشريع والقوانين">
+                 أسباب تتعلق بالتشريع والقوانين
+            </label><br>
+        </div>
+        <div class="radio-container">
+            <label style="font-size: 16px; font-weight: bold;">ضعيف</label>
+            <label style="font-size: 16px; font-weight: bold;">متوسط</label>
+            <label style="font-size: 16px; font-weight: bold;">قوي</label>
+            <label style="font-size: 16px; font-weight: bold;">قوي جدا</label><br>
+            <input type="radio" name="behavioral_and_cultural_reasons" value="ضعيف">
+            <input type="radio" name="behavioral_and_cultural_reasons" value="متوسط">
+            <input type="radio" name="behavioral_and_cultural_reasons" value="قوي">
+            <input type="radio" name="behavioral_and_cultural_reasons" value="قوي جدا">
+            <br>
+            <input type="radio" name="road_engineering_and_planning" value="ضعيف">
+            <input type="radio" name="road_engineering_and_planning" value="متوسط">
+            <input type="radio" name="road_engineering_and_planning" value="قوي">
+            <input type="radio" name="road_engineering_and_planning" value="قوي جدا">
+            <br>
+            <input type="radio" name="traffic_management_reasons" value="ضعيف">
+            <input type="radio" name="traffic_management_reasons" value="متوسط">
+            <input type="radio" name="traffic_management_reasons" value="قوي">
+            <input type="radio" name="traffic_management_reasons" value="قوي جدا">
+            <br>
+            <input type="radio" name="reasons_of_mass_transit" value="ضعيف">
+            <input type="radio" name="reasons_of_mass_transit" value="متوسط">
+            <input type="radio" name="reasons_of_mass_transit" value="قوي">
+            <input type="radio" name="reasons_of_mass_transit" value="قوي جدا">
+            <br>
+            <input type="radio" name="reasons_of_pedestrian_and_bicycle" value="ضعيف">
+            <input type="radio" name="reasons_of_pedestrian_and_bicycle" value="متوسط">
+            <input type="radio" name="reasons_of_pedestrian_and_bicycle" value="قوي">
+            <input type="radio" name="reasons_of_pedestrian_and_bicycle" value="قوي جدا">
+            <br>
+            <input type="radio" name="reasons_of_legislation_and_laws" value="ضعيف">
+            <input type="radio" name="reasons_of_legislation_and_laws" value="متوسط">
+            <input type="radio" name="reasons_of_legislation_and_laws" value="قوي">
+            <input type="radio" name="reasons_of_legislation_and_laws" value="قوي جدا">
+            <br>
+            <br>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<div class="form-control">
+    <label style="font-size: 16px; font-weight: bold;">أسباب الزحام المتعلقة بالسلوك والثقافة</label>
+<div class="grid-form">
+    <div class="checkbox-container">
+
+    <label for="waiting-wrong-cars">
+        <input type="checkbox" id="waiting-wrong-cars" name="culture-behavior-reasons[]"
+            value="الانتظار الخاطئ للسيارات الملاكي" >
+        الانتظار الخاطئ للسيارات الملاكي
+    </label><br>
+    <label for="random-crossing">
+        <input type="checkbox" id="random-crossing" name="culture-behavior-reasons[]" value="العبور العشوائي للطريق">
+        العبور العشوائي للطريق
+    </label><br>
+    <label for="random-bus-stop">
+        <input type="checkbox" id="random-bus-stop" name="culture-behavior-reasons[]" value="التوقف العشوائي للأتوبيس">
+        التوقف العشوائي للأتوبيس
+    </label><br>
+    <label for="random-microbus-stop">
+        <input type="checkbox" id="random-microbus-stop" name="culture-behavior-reasons[]"
+            value="التوقف العشوائي للميكروباص">
+        التوقف العشوائي للميكروباص
+    </label><br>
+    <label for="random-taxi-stop">
+        <input type="checkbox" id="random-taxi-stop" name="culture-behavior-reasons[]" value="التوقف العشوائي للتاكسي">
+        التوقف العشوائي للتاكسي
+    </label><br>
+    <label for="random-private-car-stop">
+        <input type="checkbox" id="random-private-car-stop" name="culture-behavior-reasons[]"
+            value="التوقف العشوائي للسيارات الخاصة">
+        التوقف العشوائي للسيارات الخاصة
+    </label><br>
+    <label for="disregard-traffic-signals">
+        <input type="checkbox" id="disregard-traffic-signals" name="culture-behavior-reasons[]"
+            value="عدم احترام إشارات المرور">
+        عدم احترام إشارات المرور
+    </label><br>
+
+    <label for="excessive-passenger-car-exit">
+        <input type="checkbox" id="excessive-passenger-car-exit" name="culture-behavior-reasons[]"
+            value="الافراط في الخروج بالسيارة الملاكي">
+        الافراط في الخروج بالسيارة الملاكي
+    </label><br>
+    <label for="lack-of-road-awareness">
+        <input type="checkbox" id="lack-of-road-awareness" name="culture-behavior-reasons[]"
+            value="قلة الاهتمام بالتوعية المرورية في التعليم والاعلام ودور العبادة">
+        قلة الاهتمام بالتوعية المرورية في التعليم والاعلام ودور العبادة
+    </label><br>
+    <label for="low_bicycle_usage_lack_of_pedestrian">
+        <input type="checkbox" id="low_bicycle_usage_lack_of_pedestrian" name="culture-behavior-reasons[]"
+            value="انخفاض ثقافة المشي واستخدام الدراجات الهوائية ">
+        o انخفاض ثقافة المشي واستخدام الدراجات الهوائية
+    </label><br>
+</div>
+<div class="radio-container">
+    <label style="font-size: 16px; font-weight: bold;">ضعيف</label>
+    <label style="font-size: 16px; font-weight: bold;">متوسط</label>
+    <label style="font-size: 16px; font-weight: bold;">قوي</label>
+    <label style="font-size: 16px; font-weight: bold;">قوي جدا</label><br>
+        <input type="radio" name="Wrong_car_parking" value="ضعيف">
+        <input type="radio" name="Wrong_car_parking" value="متوسط">
+        <input type="radio" name="Wrong_car_parking" value="قوي">
+        <input type="radio" name="Wrong_car_parking" value="قوي جدا"><br>
+            <input type="radio" name="random_crossing_of_the_road" value="ضعيف">
+            <input type="radio" name="random_crossing_of_the_road" value="متوسط">
+            <input type="radio" name="random_crossing_of_the_road" value="قوي">
+            <input type="radio" name="random_crossing_of_the_road" value="قوي جدا">
+            <br>
+        <input type="radio" name="random-bus-stop" value="ضعيف">
+        <input type="radio" name="random-bus-stop" value="متوسط">
+        <input type="radio" name="random-bus-stop" value="قوي">
+        <input type="radio" name="random-bus-stop" value="قوي جدا">
+        <br>
+        <input type="radio" name="random-microbus-stop" value="ضعيف">
+        <input type="radio" name="random-microbus-stop" value="متوسط">
+        <input type="radio" name="random-microbus-stop" value="قوي">
+        <input type="radio" name="random-microbus-stop" value="قوي جدا">
+        <br>
+        <input type="radio" name="random-taxi-stop" value="ضعيف">
+        <input type="radio" name="random-taxi-stop" value="متوسط">
+        <input type="radio" name="random-taxi-stop" value="قوي">
+        <input type="radio" name="random-taxi-stop" value="قوي جدا">
+        <br>
+        <input type="radio" name="random-private-car-stop" value="ضعيف">
+        <input type="radio" name="random-private-car-stop" value="متوسط">
+        <input type="radio" name="random-private-car-stop" value="قوي">
+        <input type="radio" name="random-private-car-stop" value="قوي جدا">
+        <br>
+        <input type="radio" name="disregard-traffic-signals" value="ضعيف">
+        <input type="radio" name="disregard-traffic-signals" value="متوسط">
+        <input type="radio" name="disregard-traffic-signals" value="قوي">
+        <input type="radio" name="disregard-traffic-signals" value="قوي جدا">
+        <br>
+        <input type="radio" name="excessive-passenger-car-exit" value="ضعيف">
+        <input type="radio" name="excessive-passenger-car-exit" value="متوسط">
+        <input type="radio" name="excessive-passenger-car-exit" value="قوي">
+        <input type="radio" name="excessive-passenger-car-exit" value="قوي جدا">
+        <br>
+        <input type="radio" name="lack-of-road-awareness" value="ضعيف">
+        <input type="radio" name="lack-of-road-awareness" value="متوسط">
+        <input type="radio" name="lack-of-road-awareness" value="قوي">
+        <input type="radio" name="lack-of-road-awareness" value="قوي جدا">
+        <br>
+        <input type="radio" name="low_bicycle-usage_lack_of_pedestrian" value="ضعيف">
+        <input type="radio" name="low_bicycle-usage_lack_of_pedestrian" value="متوسط">
+        <input type="radio" name="low_bicycle-usage_lack_of_pedestrian" value="قوي">
+        <input type="radio" name="low_bicycle-usage_lack_of_pedestrian" value="قوي جدا">
+        <br>
+    </div>
+    </div>
+
+
+
+<div class="form-control">
+    <label style="font-size: 16px; font-weight: bold;">أسباب هندسية وتخطيطية:</label>
+        <div class="grid-form">
+    <div class="checkbox-container">
+    <label for="insufficient-traffic-lights">
+        <input type="checkbox" id="insufficient_traffic_lights" name="engineering-planning-reasons[]"
+            value="عدم وجود إشارات مرور ضوئية كافية في كل الميادين">
+        عدم وجود إشارات مرور ضوئية كافية في كل الميادين
+    </label><br>
+    <label for="excessive-roundabouts">
+        <input type="checkbox" id="excessive_roundabouts" name="engineering-planning-reasons[]" value="كثرة الدورانات للخلف">
+        كثرة الدورانات للخلف
+    </label><br>
+    <label for="poor-bridge_interchanges-design">
+        <input type="checkbox" id="poor_bridge_interchanges_design" name="engineering-planning-reasons[]"
+            value="التصميم الهندسي الضعيف لمطالع الكباري">
+        التصميم الهندسي الضعيف لمطالع الكباري
+    </label><br>
+    <label for="insufficient-road-or-tunnel-width">
+        <input type="checkbox" id="insufficient_road_or_tunnel_width" name="engineering-planning-reasons[]"
+            value="عدم كفاية عرض الطريق أو النفق">
+        عدم كفاية عرض الطريق أو النفق
+    </label><br>
+    <label for="bus-and-microbus-stops-in-riverway">
+        <input type="checkbox" id="bus_and_microbus_stops_in_riverway" name="engineering-planning-reasons[]"
+            value="وجود محطات للأتوبيس والميكروباص في نهر الطريق">
+        وجود محطات للأتوبيس والميكروباص في نهر الطريق
+    </label><br>
+    <label for="insufficient-taxi-pickup-and-drop-off-areas">
+        <input type="checkbox" id="insufficient_taxi_pickup_and_drop_off_areas" name="engineering-planning-reasons[]"
+            value="عدم وجود أماكن لتنزيل وتحميل ركاب التاكسي حول الأنشطة التجارية والخدمية">
+        عدم وجود أماكن لتنزيل وتحميل ركاب التاكسي حول الأنشطة التجارية والخدمية
+    </label><br>
+    <label for="insufficient-parking-around_commercial_areas">
+        <input type="checkbox" id="insufficient_parking_around_commercial_areas" name="engineering-planning-reasons[]"
+            value="عدم وجود أماكن كافية للانتظار حول الأنشطة التجارية والخدمية">
+        عدم وجود أماكن كافية للانتظار حول الأنشطة التجارية والخدمية
+    </label><br>
+    <label for="concentration-of-government-and-private-entities-work">
+        <input type="checkbox" id="concentration_of_government_and_private_entities_work"
+            name="engineering-planning-reasons[]" value="تركز عمل الجهات الحكومية والخاصة في نفس التوقيتات">
+        تركز عمل الجهات الحكومية والخاصة في نفس التوقيتات
+    </label><br>
+    <label for="insufficient-alternatives-for-urban-transportation[]">
+        <input type="checkbox" id="insufficient_alternatives_for_urban_transportation" name="engineering-planning-reasons[]"
+            value="عدم وجود بدائل كافية للتنقل داخل المدينة">
+        عدم وجود بدائل كافية للتنقل داخل المدينة
+    </label><br>
+    <label for="poor_official_public_transport_service_level">
+        <input type="checkbox" id="poor-official-public-transport-service-level" name="engineering-planning-reasons[]"
+            value="ضعف مستوي خدمة النقل الجماعي الرسمي">
+        ضعف مستوي خدمة النقل الجماعي الرسمي
+    </label><br>
+    <label for="lack-of-appropriate-pedestrian-crossings">
+        <input type="checkbox" id="lack_of_appropriate_pedestrian_crossings" name="engineering-planning-reasons[]"
+            value="عدم وجود مناطق او كباري  او انفاق مناسبة لعبور المشاة">
+        عدم وجود مناطق او كباري او انفاق مناسبة لعبور المشاة
+    </label><br>
+    <label for="difficulty-using-pedestrian-crossings">
+        <input type="checkbox" id="difficulty_using_pedestrian_crossings" name="engineering-planning-reasons[]"
+            value="صعوبة استخدام معابر المشاه مثل الكباري  والانفاق او طول المسافه لاستخدام المعبر">
+        صعوبة استخدام معابر المشاه مثل الكباري والانفاق او طول المسافه لاستخدام المعبر
+    </label><br>
+    <label for="lack-of-bicycle-lanes">
+        <input type="checkbox" id="lack_of_bicycle_lanes" name="engineering-planning-reasons[]"
+            value="عدم وجود مسارات للدراجات الهوائية">
+        عدم وجود مسارات للدراجات الهوائية
+    </label><br>
+    <label for="commercial-entities-using-sidewalks">
+        <input type="checkbox" id="commercial_entities_using_sidewalks" name="engineering-planning-reasons[]"
+            value="استغلال الارصفه من قبل بعض الكيانات التجارية">
+        استغلال الارصفه من قبل بعض الكيانات التجارية
+    </label><br>
+    <label for="poor-bridge-design-for-pedestrians">
+        <input type="checkbox" id="poor_bridge_design_for_pedestrians" name="engineering-planning-reasons[]"
+            value="سوء تصميم الكباري وعد مناسبتها لاستخدام المشاة">
+        سوء تصميم الكباري وعد مناسبتها لاستخدام المشاة
+    </label><br>
+
+    <label for="lack-of-separation-between-traffic-and-pedestrian-paths">
+        <input type="checkbox" id="lack_of_separation_between_traffic_and_pedestrian_paths"
+            name="engineering-planning-reasons[]" value="عدم الفصل بين اتجاهات الحركة ومسارات المشاة">
+        عدم الفصل بين اتجاهات الحركة ومسارات المشاة
+    </label><br>
+
+    <label for="non-compliance-with-traffic-signs-specifications">
+        <input type="checkbox" id="non_compliance_with_traffic_signs_specifications" name="engineering-planning-reasons[]"
+            value="عدم مراعاة المواصفات الكودية للافتات الاعلانية على الطرق">
+        عدم مراعاة المواصفات الكودية للافتات الاعلانية على الطرق
+    </label><br>
+</div>
+<div class="radio-container">
+    <label style="font-size: 16px; font-weight: bold;">ضعيف</label>
+    <label style="font-size: 16px; font-weight: bold;">متوسط</label>
+    <label style="font-size: 16px; font-weight: bold;">قوي</label>
+    <label style="font-size: 16px; font-weight: bold;">قوي جدا</label><br>
+        <input type="radio" name="insufficient_traffic_lights" value="ضعيف">
+        <input type="radio" name="insufficient_traffic_lights" value="متوسط">
+        <input type="radio" name="insufficient_traffic_lights" value="قوي">
+        <input type="radio" name="insufficient_traffic_lights" value="قوي جدا"><br>
+        <input type="radio" name="excessive_roundabouts" value="ضعيف">
+        <input type="radio" name="excessive_roundabouts" value="متوسط">
+        <input type="radio" name="excessive_roundabouts" value="قوي">
+        <input type="radio" name="excessive_roundabouts" value="قوي جدا"><br>
+        <input type="radio" name="poor_bridge_interchanges_design" value="ضعيف">
+        <input type="radio" name="poor_bridge_interchanges_design" value="متوسط">
+        <input type="radio" name="poor_bridge_interchanges_design" value="قوي">
+        <input type="radio" name="poor_bridge_interchanges_design" value="قوي جدا"><br>
+        <input type="radio" name="insufficient_road_or_tunnel_width" value="ضعيف">
+        <input type="radio" name="insufficient_road_or_tunnel_width" value="متوسط">
+        <input type="radio" name="insufficient_road_or_tunnel_width" value="قوي">
+        <input type="radio" name="insufficient_road_or_tunnel_width" value="قوي جدا"><br>
+        <input type="radio" name="bus_and_microbus_stops_in_riverway" value="ضعيف">
+        <input type="radio" name="bus_and_microbus_stops_in_riverway" value="متوسط">
+        <input type="radio" name="bus_and_microbus_stops_in_riverway" value="قوي">
+        <input type="radio" name="bus_and_microbus_stops_in_riverway" value="قوي جدا"><br>
+        <input type="radio" name="insufficient_taxi_pickup_and_drop_off_areas" value="ضعيف">
+        <input type="radio" name="insufficient_taxi_pickup_and_drop_off_areas" value="متوسط">
+        <input type="radio" name="insufficient_taxi_pickup_and_drop_off_areas" value="قوي">
+        <input type="radio" name="insufficient_taxi_pickup_and_drop_off_areas" value="قوي جدا"><br>
+        <input type="radio" name="insufficient_parking_around_commercial_areas" value="ضعيف">
+        <input type="radio" name="insufficient_parking_around_commercial_areas" value="متوسط">
+        <input type="radio" name="insufficient_parking_around_commercial_areas" value="قوي">
+        <input type="radio" name="insufficient_parking_around_commercial_areas" value="قوي جدا"><br>
+        <input type="radio" name="concentration_of_government_and_private_entities_work" value="ضعيف">
+        <input type="radio" name="concentration_of_government_and_private_entities_work" value="متوسط">
+        <input type="radio" name="concentration_of_government_and_private_entities_work" value="قوي">
+        <input type="radio" name="concentration_of_government_and_private_entities_work" value="قوي جدا"><br>
+        <input type="radio" name="insufficient_alternatives_for_urban_transportation" value="ضعيف">
+        <input type="radio" name="insufficient_alternatives_for_urban_transportation" value="متوسط">
+        <input type="radio" name="insufficient_alternatives_for_urban_transportation" value="قوي">
+        <input type="radio" name="insufficient_alternatives_for_urban_transportation" value="قوي جدا"><br>
+        <input type="radio" name="poor_official_public_transport_service_level" value="ضعيف">
+        <input type="radio" name="poor_official_public_transport_service_level" value="متوسط">
+        <input type="radio" name="poor_official_public_transport_service_level" value="قوي">
+        <input type="radio" name="poor_official_public_transport_service_level" value="قوي جدا"><br>
+        <input type="radio" name="lack_of_appropriate_pedestrian_crossings" value="ضعيف">
+        <input type="radio" name="lack_of_appropriate_pedestrian_crossings" value="متوسط">
+        <input type="radio" name="lack_of_appropriate_pedestrian_crossings" value="قوي">
+        <input type="radio" name="lack_of_appropriate_pedestrian_crossings" value="قوي جدا"><br>
+        <input type="radio" name="difficulty_using_pedestrian_crossings" value="ضعيف">
+        <input type="radio" name="difficulty_using_pedestrian_crossings" value="متوسط">
+        <input type="radio" name="difficulty_using_pedestrian_crossings" value="قوي">
+        <input type="radio" name="difficulty_using_pedestrian_crossings" value="قوي جدا"><br>
+        <input type="radio" name="lack_of_bicycle_lanes" value="ضعيف">
+        <input type="radio" name="lack_of_bicycle_lanes" value="متوسط">
+        <input type="radio" name="lack_of_bicycle_lanes" value="قوي">
+        <input type="radio" name="lack_of_bicycle_lanes" value="قوي جدا"><br>
+        <input type="radio" name="commercial_entities_using_sidewalks" value="ضعيف">
+        <input type="radio" name="commercial_entities_using_sidewalks" value="متوسط">
+        <input type="radio" name="commercial_entities_using_sidewalks" value="قوي">
+        <input type="radio" name="commercial_entities_using_sidewalks" value="قوي جدا"><br>
+        <input type="radio" name="poor_bridge_design_for_pedestrians" value="ضعيف">
+        <input type="radio" name="poor_bridge_design_for_pedestrians" value="متوسط">
+        <input type="radio" name="poor_bridge_design_for_pedestrians" value="قوي">
+        <input type="radio" name="poor_bridge_design_for_pedestrians" value="قوي جدا"><br>
+        <input type="radio" name="lack_of_separation_between_traffic_and_pedestrian_paths" value="ضعيف">
+        <input type="radio" name="lack_of_separation_between_traffic_and_pedestrian_paths" value="متوسط">
+        <input type="radio" name="lack_of_separation_between_traffic_and_pedestrian_paths" value="قوي">
+        <input type="radio" name="lack_of_separation_between_traffic_and_pedestrian_paths" value="قوي جدا"><br>
+        <input type="radio" name="non_compliance_with_traffic_signs_specifications" value="ضعيف">
+        <input type="radio" name="non_compliance_with_traffic_signs_specifications" value="متوسط">
+        <input type="radio" name="non_compliance_with_traffic_signs_specifications" value="قوي">
+        <input type="radio" name="non_compliance_with_traffic_signs_specifications" value="قوي جدا"><br>
+    </div>
+</div>
+
+
+
+<div class="form-control">
+<label style="font-size: 16px; font-weight: bold;">اسباب تتعلق بانخفاض استخدام وسائل النقل الجماعي:</label>
+        <div class="grid-form">
+            <div class="checkbox-container">
+    <label for="inappropriateness-of-public-transportation[]">
+        <input type="checkbox" id="inappropriateness_of_public_transportation" name="low-public-transport-usage-reasons[]"
+            value="عدم مناسبتها">
+        عدم مناسبتها
+    </label><br>
+    <label for="unavailability-of-public-transportation[]">
+        <input type="checkbox" id="unavailability_of_public_transportation" name="low-public-transport-usage-reasons[]"
+            value="عدم وفرتها">
+        عدم وفرتها
+    </label><br>
+    <label for="lack-of-integration-of-public-transportation[]">
+        <input type="checkbox" id="lack_of_integration_of_public_transportation" name="low-public-transport-usage-reasons[]"
+            value="عدم تكاملها">
+        عدم تكاملها
+    </label><br>
+    <label for="high-cost-of-public-transportation[]">
+        <input type="checkbox" id="high_cost_of_public_transportation" name="low-public-transport-usage-reasons[]"
+            value="ارتفاع تكلفتها أوعدم تحديد التكلفه مسبقا">
+        ارتفاع تكلفتها أوعدم تحديد التكلفه مسبقا
+    </label><br>
+    <label for="lack-of-scheduled-timings">
+        <input type="checkbox" id="lack_of_scheduled_timings" name="low-public-transport-usage-reasons[]"
+            value="عدم وجود مواعيد منتظمة او محدده">
+        عدم وجود مواعيد منتظمة او محدده
+    </label><br>
+
+    <label for="poor-service-or-condition">
+        <input type="checkbox" id="poor_service_or_condition" name="low-public-transport-usage-reasons[]"
+            value="سوء الخدمه أو عدم نظافتها او صلاحيتها">
+        سوء الخدمه أو عدم نظافتها او صلاحيتها
+    </label><br>
+    <label for="driver-ill-treatment">
+        <input type="checkbox" id="driver_ill_treatment" name="low-public-transport-usage-reasons[]"
+            value="سوء معامله السائق">
+        سوء معامله السائق
+    </label><br>
+    <label for="lack-of-air-conditioning">
+        <input type="checkbox" id="lack_of_air_conditioning" name="low-public-transport-usage-reasons[]"
+            value="عدم وجود تكييف">
+        عدم وجود تكييف
+    </label><br>
+    <label for="unavailability-of-transportation[]-to-destination">
+        <input type="checkbox" id="unavailability_of_transportation_to_destination"
+            name="low-public-transport-usage-reasons[]" value="عدم وصولها للمكان المقصود">
+        عدم وصولها للمكان المقصود
+    </label><br>
+    <label for="unwillingness-to-walk-long-distances">
+        <input type="checkbox" id="unwillingness_to_walk_long_distances" name="low-public-transport-usage-reasons[]"
+            value="عدم الرغبة في المشي لمسافه كبيره في بداية الرحله او نهايتها (Last mile)">
+        عدم الرغبة في المشي لمسافه كبيره في بداية الرحله او نهايتها (Last mile)
+    </label><br>
+    <label for="fear-and-lack-of-safety">
+        <input type="checkbox" id="fear_and_lack_of_safety" name="low-public-transport-usage-reasons[]"
+            value="استشعار الخوف وعدم الامان">
+        استشعار الخوف وعدم الامان
+    </label><br>
+</div>
+<div class="radio-container">
+    <label style="font-size: 16px; font-weight: bold;">ضعيف</label>
+    <label style="font-size: 16px; font-weight: bold;">متوسط</label>
+    <label style="font-size: 16px; font-weight: bold;">قوي</label>
+    <label style="font-size: 16px; font-weight: bold;">قوي جدا</label><br>
+        <input type="radio" name="inappropriateness_of_public_transportation" value="ضعيف">
+        <input type="radio" name="inappropriateness_of_public_transportation" value="متوسط">
+        <input type="radio" name="inappropriateness_of_public_transportation" value="قوي">
+        <input type="radio" name="inappropriateness_of_public_transportation" value="قوي جدا"><br>
+        <input type="radio" name="unavailability_of_public_transportation" value="ضعيف">
+        <input type="radio" name="unavailability_of_public_transportation" value="متوسط">
+        <input type="radio" name="unavailability_of_public_transportation" value="قوي">
+        <input type="radio" name="unavailability_of_public_transportation" value="قوي جدا"><br>
+        <input type="radio" name="lack_of_integration_of_public_transportation" value="ضعيف">
+        <input type="radio" name="lack_of_integration_of_public_transportation" value="متوسط">
+        <input type="radio" name="lack_of_integration_of_public_transportation" value="قوي">
+        <input type="radio" name="lack_of_integration_of_public_transportation" value="قوي جدا"><br>
+        <input type="radio" name="high_cost_of_public_transportation" value="ضعيف">
+        <input type="radio" name="high_cost_of_public_transportation" value="متوسط">
+        <input type="radio" name="high_cost_of_public_transportation" value="قوي">
+        <input type="radio" name="high_cost_of_public_transportation" value="قوي جدا"><br>
+        <input type="radio" name="lack_of_scheduled_timings" value="ضعيف">
+        <input type="radio" name="lack_of_scheduled_timings" value="متوسط">
+        <input type="radio" name="lack_of_scheduled_timings" value="قوي">
+        <input type="radio" name="lack_of_scheduled_timings" value="قوي جدا"><br>
+        <input type="radio" name="poor_service_or_condition" value="ضعيف">
+        <input type="radio" name="poor_service_or_condition" value="متوسط">
+        <input type="radio" name="poor_service_or_condition" value="قوي">
+        <input type="radio" name="poor_service_or_condition" value="قوي جدا"><br>
+        <input type="radio" name="driver_ill_treatment" value="ضعيف">
+        <input type="radio" name="driver_ill_treatment" value="متوسط">
+        <input type="radio" name="driver_ill_treatment" value="قوي">
+        <input type="radio" name="driver_ill_treatment" value="قوي جدا"><br>
+        <input type="radio" name="lack_of_air_conditioning" value="ضعيف">
+        <input type="radio" name="lack_of_air_conditioning" value="متوسط">
+        <input type="radio" name="lack_of_air_conditioning" value="قوي">
+        <input type="radio" name="lack_of_air_conditioning" value="قوي جدا"><br>
+        <input type="radio" name="unavailability_of_transportation_to_destination" value="ضعيف">
+        <input type="radio" name="unavailability_of_transportation_to_destination" value="متوسط">
+        <input type="radio" name="unavailability_of_transportation_to_destination" value="قوي">
+        <input type="radio" name="unavailability_of_transportation_to_destination" value="قوي جدا"><br>
+        <input type="radio" name="unwillingness_to_walk_long_distances" value="ضعيف">
+        <input type="radio" name="unwillingness_to_walk_long_distances" value="متوسط">
+        <input type="radio" name="unwillingness_to_walk_long_distances" value="قوي">
+        <input type="radio" name="unwillingness_to_walk_long_distances" value="قوي جدا"><br>
+        <input type="radio" name="fear_and_lack_of_safety" value="ضعيف">
+        <input type="radio" name="fear_and_lack_of_safety" value="متوسط">
+        <input type="radio" name="fear_and_lack_of_safety" value="قوي">
+        <input type="radio" name="fear_and_lack_of_safety" value="قوي جدا"><br>
+    </div>
+         </div>
+        </div>
+</div></div>
+
+
+
+        
+        <div>
+            <h2 class="arrow" style="cursor: pointer;">القسم الرابع: حلول الزحام ودرجة واقعياتها</h2>
+            <div class="form-control">
+    <label style="font-size: 16px; font-weight: bold;">حلول ثقافية:</label><br>
+            <div class="grid-form">
+                <div class="checkbox-container">
+    <label for="traffic-awareness-in-education-media-worship">
+        <input type="checkbox" id="traffic_awareness_in_education_media_worship" name="cultural-solutions[]"
+            value="التوعية المرورية في التعليم والاعلام ودور العبادة">
+        التوعية المرورية في التعليم والاعلام ودور العبادة
+    </label><br>
+    <label for="crosswalks-obligation">
+        <input type="checkbox" id="crosswalks_obligation" name="cultural-solutions-details[]"
+            value="الالتزام بالأماكن المخصصة لعبور المشاة">
+        الالتزام بالأماكن المخصصة لعبور المشاة
+    </label><br>
+    <label for="waiting-in-designated-areas">
+        <input type="checkbox" id="waiting_in_designated_areas" name="cultural-solutions-details[]"
+            value="الانتظار في الأماكن المخصصة للانتظار فقط">
+        الانتظار في الأماكن المخصصة للانتظار فقط
+    </label><br>
+    <label for="reduce-private-car-usage">
+        <input type="checkbox" id="reduce_private_car_usage" name="cultural-solutions-details[]"
+            value="التقليل من الخروج بالسيارة الخاصة">
+        التقليل من الخروج بالسيارة الخاصة
+    </label><br>
+    <label for="encourage-walking">
+        <input type="checkbox" id="encourage_walking" name="cultural-solutions-details[]" value="التحفيز على المشي">
+        التحفيز على المشي
+    </label><br>
+    <label for="encourage-cycling">
+        <input type="checkbox" id="encourage_cycling" name="cultural-solutions-details[]"
+            value="التحفيز على استخدام الدراجات الهوائية">
+        التحفيز على استخدام الدراجات الهوائية
+    </label><br>
+    <label for="encourage-carpooling">
+        <input type="checkbox" id="encourage_carpooling" name="cultural-solutions-details[]"
+            value="التحفيز على النقل التشاركي">
+        التحفيز على النقل التشاركي
+    </label><br>
+    <label for="encourage-public-transportation[]">
+        <input type="checkbox" id="encourage_public_transportation" name="cultural-solutions-details[]"
+            value="التحفيز على استخدام النقل الجماعي">
+        التحفيز على استخدام النقل الجماعي
+    </label><br>
+</div>
+<div class="radio-container">
+        <label style="font-size: 16px; font-weight: bold;">ضعيف</label>
+        <label style="font-size: 16px; font-weight: bold;">متوسط</label>
+        <label style="font-size: 16px; font-weight: bold;">قوي</label>
+        <label style="font-size: 16px; font-weight: bold;">قوي جدا</label><br>
+    <input type="radio" name="traffic_awareness_in_education_media_worship" value="ضعيف">
+    <input type="radio" name="traffic_awareness_in_education_media_worship" value="متوسط">
+    <input type="radio" name="traffic_awareness_in_education_media_worship" value="قوي">
+    <input type="radio" name="traffic_awareness_in_education_media_worship" value="قوي جدا"><br>
+        <input type="radio" name="crosswalks_obligation" value="ضعيف">
+        <input type="radio" name="crosswalks_obligation" value="متوسط">
+        <input type="radio" name="crosswalks_obligation" value="قوي">
+        <input type="radio" name="crosswalks_obligation" value="قوي جدا"><br>
+        <input type="radio" name="waiting_in_designated_areas" value="ضعيف">
+        <input type="radio" name="waiting_in_designated_areas" value="متوسط">
+        <input type="radio" name="waiting_in_designated_areas" value="قوي">
+        <input type="radio" name="waiting_in_designated_areas" value="قوي جدا"><br>
+        <input type="radio" name="reduce_private_car_usage" value="ضعيف">
+        <input type="radio" name="reduce_private_car_usage" value="متوسط">
+        <input type="radio" name="reduce_private_car_usage" value="قوي">
+        <input type="radio" name="reduce_private_car_usage" value="قوي جدا"><br>
+        <input type="radio" name="encourage_walking" value="ضعيف">
+        <input type="radio" name="encourage_walking" value="متوسط">
+        <input type="radio" name="encourage_walking" value="قوي">
+        <input type="radio" name="encourage_walking" value="قوي جدا"><br>
+        <input type="radio" name="encourage_cycling" value="ضعيف">
+        <input type="radio" name="encourage_cycling" value="متوسط">
+        <input type="radio" name="encourage_cycling" value="قوي">
+        <input type="radio" name="encourage_cycling" value="قوي جدا"><br>
+        <input type="radio" name="encourage_carpooling" value="ضعيف">
+        <input type="radio" name="encourage_carpooling" value="متوسط">
+        <input type="radio" name="encourage_carpooling" value="قوي">
+        <input type="radio" name="encourage_carpooling" value="قوي جدا"><br>
+        <input type="radio" name="encourage_public_transportation" value="ضعيف">
+        <input type="radio" name="encourage_public_transportation" value="متوسط">
+        <input type="radio" name="encourage_public_transportation" value="قوي">
+        <input type="radio" name="encourage_public_transportation" value="قوي جدا"><br>
+
+</div></div>
+
+
+<div class="form-control">
+<label style="font-size: 16px; font-weight: bold;">حلول هندسية وتخطيطية:</label><br>
+<div class="grid-form">
+    <div class="checkbox-container">
+    <label for="installation_of_traffic-signals_at_busy_intersections">
+        <input type="checkbox" id="installation_of_traffic_signals_at_busy_intersections"
+            name="engineering-planning-solutions[]" value="تركيب وتشغيل إشارات ضوئية عند التقاطعات السطحية المزدحمة">
+        تركيب وتشغيل إشارات ضوئية عند التقاطعات السطحية المزدحمة
+    </label><br>
+    <label for="construction-of-tunnels-or-bridges-at-busy-intersections">
+        <input type="checkbox" id="construction_of_tunnels_or_bridges_at_busy_intersections"
+            name="engineering-planning-solutions[]" value="عمل أنفاق أو كباري عند التقاطعات السطحية المزدحمة">
+        عمل أنفاق أو كباري عند التقاطعات السطحية المزدحمة
+    </label><br>
+    <label for="expansion-of-roundabouts-around-cities">
+        <input type="checkbox" id="expansion_of_roundabouts_around_cities" name="engineering-planning-solutions[]"
+            value="التوسع في الطرق الدائرية حول المدن">
+        التوسع في الطرق الدائرية حول المدن
+    </label><br>
+    <label for="expansion-or-creation-of-alternative-roads">
+        <input type="checkbox" id="expansion_or_creation_of_alternative_roads" name="engineering-planning-solutions[]"
+            value="توسعة الطرق المزدحمة أو انشاء محاور بديله">
+        توسعة الطرق المزدحمة أو انشاء محاور بديله
+    </label><br>
+    <label for="opening-reverse-turns-beneath-bridges-with-traffic-signals">
+        <input type="checkbox" id="opening_reverse_turns_beneath_bridges_with_traffic_signals"
+            name="engineering-planning-solutions[]" value="فتح الدورانات للخلف أسفل الكباري مع تركيب وتشغيل إشارة ضوئية">
+        فتح الدورانات للخلف أسفل الكباري مع تركيب وتشغيل إشارة ضوئية
+    </label><br>
+    <label for="dedicating-places-for-bus-microbus-and-taxi-stations-off-the-road">
+        <input type="checkbox" id="dedicating_places_for_bus_microbus_and_taxi_stations_off_the_road"
+            name="engineering-planning-solutions[]"
+            value="تخصيص أماكن لمحطات الأتوبيس والميكروباص والتاكسي خارج نهر الطريق">
+        تخصيص أماكن لمحطات الأتوبيس والميكروباص والتاكسي خارج نهر الطريق
+    </label><br>
+    <label for="providing_ample_parking_spaces_especially_around_commercial_and_service_areas">
+        <input type="checkbox" id="providing-ample-parking-spaces-especially-around-commercial-and-service-areas"
+            name="engineering-planning-solutions[]"
+            value="توفير أماكن كافية للانتظار خصوصا حول الأنشطة التجارية والخدمية">
+        توفير أماكن كافية للانتظار خصوصا حول الأنشطة التجارية والخدمية
+    </label><br>
+    <label for="expanding-the-provision-of-safe-pedestrian-crossings-from-road-users">
+        <input type="checkbox" id="expanding_the_provision_of_safe_pedestrian_crossings_from_road_users"
+            name="engineering-planning-solutions[]"
+            value="التوسع فى مجال توفير معابر آمنه للمشاة من مستخدمى الطرق بما يحقق الأمان الكافى للسير الطوالي أو العبور">
+        التوسع فى مجال توفير معابر آمنه للمشاة من مستخدمى الطرق بما يحقق الأمان الكافى للسير الطوالي أو العبور
+    </label><br>
+    <label for="prohibiting-private-car-traffic-in-some-areas">
+        <input type="checkbox" id="prohibiting_private_car_traffic_in_some_areas" name="engineering-planning-solutions[]"
+            value="حظر سير السيارات الخاصة في بعض المناطق">
+        حظر سير السيارات الخاصة في بعض المناطق
+    </label><br>
+
+    <label for="establishing-paths-for-walking-and-cycling">
+        <input type="checkbox" id="establishing_paths_for_walking_and_cycling" name="engineering-planning-solutions[]"
+            value="إنشاء مسارات للمشي والدراجات الهوائية">
+        إنشاء مسارات للمشي والدراجات الهوائية
+    </label><br>
+    <label for="dismantling-peak-hours-inside-the-city-by">
+        <input type="checkbox" id="dismantling_peak_hours_inside_the_city_by" name="engineering-planning-solutions[]"
+            value="تفكيك ساعات الذروة داخل المدينة من خلال">
+        تفكيك ساعات الذروة داخل المدينة من خلال :-
+    </label><br>
+    <label for="expand-digital-services">
+        <input type="checkbox" id="expand_digital_services" name="engineering-planning-solutions[]"
+            value="التوسع في انهاء الخدمات باستخدام الوسائل الرقمية (on line )">
+        التوسع في انهاء الخدمات باستخدام الوسائل الرقمية (on line )
+    </label><br>    
+    <label for="flexible-working-hours">
+        <input type="checkbox" id="flexible_working_hours" name="engineering-planning-solutions[]"
+            value="المرونة في ساعات العمل ( بدء وانتهاء)">
+        المرونة في ساعات العمل ( بدء وانتهاء)
+    </label><br>
+</div>
+<div class="radio-container">
+        <label style="font-size: 16px; font-weight: bold;">ضعيف</label>
+        <label style="font-size: 16px; font-weight: bold;">متوسط</label>
+        <label style="font-size: 16px; font-weight: bold;">قوي</label>
+        <label style="font-size: 16px; font-weight: bold;">قوي جدا</label><br>
+    <input type="radio" name="installation_of_traffic_signals_at_busy_intersections" value="ضعيف">
+    <input type="radio" name="installation_of_traffic_signals_at_busy_intersections" value="متوسط">
+    <input type="radio" name="installation_of_traffic_signals_at_busy_intersections" value="قوي">
+    <input type="radio" name="installation_of_traffic_signals_at_busy_intersections" value="قوي جدا"><br>
+        <input type="radio" name="construction_of_tunnels_or_bridges_at_busy_intersections" value="ضعيف">
+        <input type="radio" name="construction_of_tunnels_or_bridges_at_busy_intersections" value="متوسط">
+        <input type="radio" name="construction_of_tunnels_or_bridges_at_busy_intersections" value="قوي">
+        <input type="radio" name="construction_of_tunnels_or_bridges_at_busy_intersections" value="قوي جدا"><br>
+        <input type="radio" name="expansion_of_roundabouts_around_cities" value="ضعيف">
+        <input type="radio" name="expansion_of_roundabouts_around_cities" value="متوسط">
+        <input type="radio" name="expansion_of_roundabouts_around_cities" value="قوي">
+        <input type="radio" name="expansion_of_roundabouts_around_cities" value="قوي جدا"><br>
+        <input type="radio" name="expansion_or_creation_of_alternative_roads" value="ضعيف">
+        <input type="radio" name="expansion_or_creation_of_alternative_roads" value="متوسط">
+        <input type="radio" name="expansion_or_creation_of_alternative_roads" value="قوي">
+        <input type="radio" name="expansion_or_creation_of_alternative_roads" value="قوي جدا"><br>
+        <input type="radio" name="opening_reverse_turns_beneath_bridges_with_traffic_signals" value="ضعيف">
+        <input type="radio" name="opening_reverse_turns_beneath_bridges_with_traffic_signals" value="متوسط">
+        <input type="radio" name="opening_reverse_turns_beneath_bridges_with_traffic_signals" value="قوي">
+        <input type="radio" name="opening_reverse_turns_beneath_bridges_with_traffic_signals" value="قوي جدا"><br>
+        <input type="radio" name="dedicating_places_for_bus_microbus_and_taxi_stations_off_the_road" value="ضعيف">
+        <input type="radio" name="dedicating_places_for_bus_microbus_and_taxi_stations_off_the_road" value="متوسط">
+        <input type="radio" name="dedicating_places_for_bus_microbus_and_taxi_stations_off_the_road" value="قوي">
+        <input type="radio" name="dedicating_places_for_bus_microbus_and_taxi_stations_off_the_road" value="قوي جدا"><br>
+        <input type="radio" name="providing_ample_parking_spaces_especially_around_commercial_and_service_areas" value="ضعيف">
+        <input type="radio" name="providing_ample_parking_spaces_especially_around_commercial_and_service_areas" value="متوسط">
+        <input type="radio" name="providing_ample_parking_spaces_especially_around_commercial_and_service_areas" value="قوي">
+        <input type="radio" name="providing_ample_parking_spaces_especially_around_commercial_and_service_areas"
+            value="قوي جدا"><br>
+        <input type="radio" name="expanding_the_provision_of_safe_pedestrian_crossings_from_road_users" value="ضعيف">
+        <input type="radio" name="expanding_the_provision_of_safe_pedestrian_crossings_from_road_users" value="متوسط">
+        <input type="radio" name="expanding_the_provision_of_safe_pedestrian_crossings_from_road_users" value="قوي">
+        <input type="radio" name="expanding_the_provision_of_safe_pedestrian_crossings_from_road_users" value="قوي جدا"><br>
+        <input type="radio" name="prohibiting_private_car_traffic_in_some_areas" value="ضعيف">
+        <input type="radio" name="prohibiting_private_car_traffic_in_some_areas" value="متوسط">
+        <input type="radio" name="prohibiting_private_car_traffic_in_some_areas" value="قوي">
+        <input type="radio" name="prohibiting_private_car_traffic_in_some_areas" value="قوي جدا"><br>
+        <input type="radio" name="establishing_paths_for_walking_and_cycling" value="ضعيف">
+        <input type="radio" name="establishing_paths_for_walking_and_cycling" value="متوسط">
+        <input type="radio" name="establishing_paths_for_walking_and_cycling" value="قوي">
+        <input type="radio" name="establishing_paths_for_walking_and_cycling" value="قوي جدا"><br>
+        <input type="radio" name="dismantling_peak_hours_inside_the_city_by" value="ضعيف">
+        <input type="radio" name="dismantling_peak_hours_inside_the_city_by" value="متوسط">
+        <input type="radio" name="dismantling_peak_hours_inside_the_city_by" value="قوي">
+        <input type="radio" name="dismantling_peak_hours_inside_the_city_by" value="قوي جدا"><br>
+        <input type="radio" name="expand_digital_services" value="ضعيف">
+        <input type="radio" name="expand_digital_services" value="متوسط">
+        <input type="radio" name="expand_digital_services" value="قوي">
+        <input type="radio" name="expand_digital_services" value="قوي جدا"><br>
+        <input type="radio" name="flexible_working_hours" value="ضعيف">
+        <input type="radio" name="flexible_working_hours" value="متوسط">
+        <input type="radio" name="flexible_working_hours" value="قوي">
+        <input type="radio" name="flexible_working_hours" value="قوي جدا"><br>
+</div></div>
+
+
+
+<div class="form-control">
+    <label style="font-size: 16px; font-weight: bold;">حلول تشريعية وتنفيذية:</label><br>
+<div class="grid-form">
+    <div class="checkbox-container">
+    <label for="establishment-of-a-unified-official-entity-responsible-for-traffic-management">
+        <input type="checkbox" id="establishment_of_a_unified_official_entity_responsible_for_traffic_management"
+            name="legislative-executive-solutions[]"
+            value="الاسراع في تأسيس كيان رسمي موحد مسؤول عن متابعة وحل الزحام يضم الجهات الرسمية ذات الصلة وأساتذة الجامعات ونقابة المهندسين">
+        الاسراع في تأسيس كيان رسمي موحد مسؤول عن متابعة وحل الزحام يضم الجهات الرسمية ذات الصلة وأساتذة الجامعات ونقابة
+        المهندسين
+    </label><br>
+    <label for="review-of-laws-and-regulations-pertaining-to-improper-parking-violations">
+        <input type="checkbox" id="review_of_laws_and_regulations_pertaining_to_improper_parking_violations"
+            name="legislative-executive-solutions[]"
+            value="مراجعة التشريعات والقوانين الخاصة بعقوبات الانتظار الخاطيء ودراسة مدى مناسبتها واحتياجها للتغليظ من عدمه">
+        مراجعة التشريعات والقوانين الخاصة بعقوبات الانتظار الخاطيء ودراسة مدى مناسبتها واحتياجها للتغليظ من عدمه
+    </label><br>
+    <label for="review-of-laws-and-regulations-pertaining-to-pedestrian-crossing-violations">
+        <input type="checkbox" id="review_of_laws_and_regulations_pertaining_to_pedestrian_crossing_violations"
+            name="legislative-executive-solutions[]"
+            value="مراجعة التشريعات والقوانين الخاصة بعقوبات عدم التزام المشاة بمناطق العبور المحددة">
+        مراجعة التشريعات والقوانين الخاصة بعقوبات عدم التزام المشاة بمناطق العبور المحددة
+    </label><br>
+    <label for="increasing-the-penalty-for-parking-violations">
+        <input type="checkbox" id="increasing_the_penalty_for_parking_violations" name="legislative-executive-solutions[]"
+            value="تغليظ عقوبة الانتظار">
+        تغليظ عقوبة الانتظار
+    </label><br>
+    <label for="mandatory-traffic-impact-studies-for-facilities-attracting-high-volumes-of-traffic">
+        <input type="checkbox" id="mandatory_traffic_impact_studies_for_facilities_attracting-high_volumes_of_traffic"
+            name="legislative-executive-solutions[]"
+            value="الالزام بتقديم دراسات الأثر المروري للمنشآت التي قد تكون جاذبة لأحجام تردد عالية  للتأكد من تحقق أماكن الجراجات وكذا تأثير التردد على الشبكة">
+        الالزام بتقديم دراسات الأثر المروري للمنشآت التي قد تكون جاذبة لأحجام تردد عالية للتأكد من تحقق أماكن الجراجات
+        وكذا تأثير التردد على الشبكة
+    </label><br>
+
+    <label for="expanding-electronic-surveillance-systems-especially-at-attraction-points-bridges-and-tunnels">
+        <input type="checkbox"
+            id="expanding_electronic_surveillance_systems_especially_at_attraction_points_bridges_and_tunnels"
+            name="legislative-executive-solutions[]"
+            value="التوسع في انظمة الرقابة الاليكترونية خصوصا في الاماكن الجاذبة للتردد والكباري والانفاق">
+        التوسع في انظمة الرقابة الاليكترونية خصوصا في الاماكن الجاذبة للتردد والكباري والانفاق
+    </label><br>
+
+    <label for="mandatory-traffic-awareness-curriculum-in-schools">
+        <input type="checkbox" id="mandatory_traffic_awareness_curriculum_in_schools"
+            name="legislative-executive-solutions[]" value="الالزام بتدريس مواد  توعية مرورية على طلبة المدارس">
+        الالزام بتدريس مواد توعية مرورية على طلبة المدارس
+    </label><br>
+
+    
+    <label for="review-of-licensing-laws-for-land-transport-companies-to-support-the-establishment-of-private-entities">
+        <input type="checkbox"
+            id="review_of_licensing_laws_for_land_transport_companies_to_support_the_establishment_of_private_entities"
+            name="legislative-executive-solutions[]"
+            value="مراجعة قوانين وقواعد الترخيص لشركات النقل البري للركاب لتدعيم إقامة كيانات خاصة">
+        مراجعة قوانين وقواعد الترخيص لشركات النقل البري للركاب لتدعيم إقامة كيانات خاصة
+    </label><br>
+    <label for="mandatory-broadcast-of-traffic-awareness-segments-on-various-media">
+        <input type="checkbox" id="mandatory_broadcast_of_traffic_awareness_segments_on_various_media"
+            name="legislative-executive-solutions[]" value="الالزام ببث فقرات توعوية مرورية على وسائل الاعلام المختلفه">
+        الالزام ببث فقرات توعوية مرورية على وسائل الاعلام المختلفه
+    </label><br>
+    </div>
+    <div class="radio-container">
+        <label style="font-size: 16px; font-weight: bold;">ضعيف</label>
+        <label style="font-size: 16px; font-weight: bold;">متوسط</label>
+        <label style="font-size: 16px; font-weight: bold;">قوي</label>
+        <label style="font-size: 16px; font-weight: bold;">قوي جدا</label><br>
+                <input type="radio" name="establishment_of_a_unified_official_entity_responsible_for_traffic_management" value="ضعيف">
+                <input type="radio" name="establishment_of_a_unified_official_entity_responsible_for_traffic_management" value="متوسط">
+                <input type="radio" name="establishment_of_a_unified_official_entity_responsible_for_traffic_management" value="قوي">
+                <input type="radio" name="establishment_of_a_unified_official_entity_responsible_for_traffic_management"
+                    value="قوي جدا"><br>
+        <input type="radio" name="review_of_laws_and_regulations_pertaining_to_improper_parking_violations" value="ضعيف">
+        <input type="radio" name="review_of_laws_and_regulations_pertaining_to_improper_parking_violations" value="متوسط">
+        <input type="radio" name="review_of_laws_and_regulations_pertaining_to_improper_parking_violations" value="قوي">
+        <input type="radio" name="review_of_laws_and_regulations_pertaining_to_improper_parking_violations" value="قوي جدا"><br>
+        <input type="radio" name="review_of_laws_and_regulations_pertaining_to_pedestrian_crossing_violations" value="ضعيف">
+        <input type="radio" name="review_of_laws_and_regulations_pertaining_to_pedestrian_crossing_violations" value="متوسط">
+        <input type="radio" name="review_of_laws_and_regulations_pertaining_to_pedestrian_crossing_violations" value="قوي">
+        <input type="radio" name="review_of_laws_and_regulations_pertaining_to_pedestrian_crossing_violations"
+            value="قوي جدا"><br>
+        <input type="radio" name="increasing_the_penalty_for_parking_violations" value="ضعيف">
+        <input type="radio" name="increasing_the_penalty_for_parking_violations" value="متوسط">
+        <input type="radio" name="increasing_the_penalty_for_parking_violations" value="قوي">
+        <input type="radio" name="increasing_the_penalty_for_parking_violations" value="قوي جدا"><br>
+    <input type="radio" name="mandatory_traffic_impact_studies_for_facilities_attracting" value="ضعيف">
+    <input type="radio" name="mandatory_traffic_impact_studies_for_facilities_attracting" value="متوسط">
+    <input type="radio" name="mandatory_traffic_impact_studies_for_facilities_attracting" value="قوي">
+    <input type="radio" name="mandatory_traffic_impact_studies_for_facilities_attracting" value="قوي جدا"><br>
+        <input type="radio" name="expanding_electronic_surveillance_systems_especially_at_attraction_points_bridges_and_tunnels"
+            value="ضعيف">
+        <input type="radio" name="expanding_electronic_surveillance_systems_especially_at_attraction_points_bridges_and_tunnels"
+            value="متوسط">
+        <input type="radio" name="expanding_electronic_surveillance_systems_especially_at_attraction_points_bridges_and_tunnels"
+            value="قوي">
+        <input type="radio" name="expanding_electronic_surveillance_systems_especially_at_attraction_points_bridges_and_tunnels"
+            value="قوي جدا"><br>
+        <input type="radio" name="mandatory_traffic_awareness_curriculum_in_schools" value="ضعيف">
+        <input type="radio" name="mandatory_traffic_awareness_curriculum_in_schools" value="متوسط">
+        <input type="radio" name="mandatory_traffic_awareness_curriculum_in_schools" value="قوي">
+        <input type="radio" name="mandatory_traffic_awareness_curriculum_in_schools" value="قوي جدا"><br>
+        <input type="radio"
+            name="review_of_licensing_laws_for_land_transport_companies_to_support_the_establishment_of_private_entities"
+            value="ضعيف">
+        <input type="radio"
+            name="review_of_licensing_laws_for_land_transport_companies_to_support_the_establishment_of_private_entities"
+            value="متوسط">
+        <input type="radio"
+            name="review_of_licensing_laws_for_land_transport_companies_to_support_the_establishment_of_private_entities"
+            value="قوي">
+        <input type="radio"
+            name="review_of_licensing_laws_for_land_transport_companies_to_support_the_establishment_of_private_entities"
+            value="قوي جدا"><br>
+        <input type="radio" name="mandatory_broadcast_of_traffic_awareness_segments_on_various_media" value="ضعيف">
+        <input type="radio" name="mandatory_broadcast_of_traffic_awareness_segments_on_various_media" value="متوسط">
+        <input type="radio" name="mandatory_broadcast_of_traffic_awareness_segments_on_various_media" value="قوي">
+        <input type="radio" name="mandatory_broadcast_of_traffic_awareness_segments_on_various_media" value="قوي جدا"><br>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+            <div>
+                <h2 class="arrow" style="cursor: pointer;">القسم الخامس: إضافات لما ورد بالاستبيان</h2>
+            <div class="form-control">
+                <label for="proposal-1" style=" font-weight: bold;">أماكن آخري للزحام:</label>
+                <input type="text" id="proposal-1" name="proposal-1" ><br>
+            
+                <label for="proposal-2" style=" font-weight: bold;"> أسباب آخري للزحام:</label>
+                <input type="text" id="proposal-2" name="proposal-2" ><br>
+            
+                <label for="proposal-3" style=" font-weight: bold;">حلول آخري للزحام:</label>
+                <input type="text" id="proposal-3" name="proposal-3" ><br>
+            </div>
+
+
+
+            
+        <button class="submitBtn" id="submitBtn" type="submitBtn" value="submitBtn">إرسال</button>
+
+
+   
+
+
+    </form>
+    
+        <!-- <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+        <script src="map.js"></script> -->
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+            <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+            <script src="map.js"></script>
+            <script src="map2.js"></script>
+            
+    <script>
+        
+    document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("click", function (event) {
+            const header = event.target.closest("h2.arrow");
+            if (header) {
+                header.parentElement.classList.toggle("open");
+            }
+        });
+    });
+
+    </script>
+
+</body>
+
+</html>
